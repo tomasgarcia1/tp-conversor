@@ -9,12 +9,12 @@
  */
 public class ConversorKilogramoLibra extends Conversor {
 
-      private final Double kilogramoLibra = 0.45 ;    
-        private final Double libraKilogramo = 2.2;
-    
+    private final Double kilogramoLibra = 0.45;
+    private final Double libraKilogramo = 2.2;
+
     @Override
     public String getName() {
-       return "Kilogramo / Libra";
+        return "Kilogramo / Libra";
     }
 
     @Override
@@ -29,12 +29,12 @@ public class ConversorKilogramoLibra extends Conversor {
 
     @Override
     public Double convertValue2(Double kilogramo) {
-      return kilogramo * kilogramoLibra;
+        return kilogramo * kilogramoLibra;
     }
 
     @Override
     public Double convertValue1(Double libra) {
-       return libra * libraKilogramo;
+        return libra * libraKilogramo;
     }
-    
+
 }

@@ -9,12 +9,12 @@ import javax.swing.JTextField;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Tomas
  */
 public class Form extends javax.swing.JFrame {
+
     private Conversor convesorSelected = null;
     private List<Conversor> conversores = new ArrayList<>();
     private boolean convertirAValor2;
@@ -26,40 +26,40 @@ public class Form extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Conversor");
         this.setLocationRelativeTo(null);
-         conversores.add(new ConversorKilogramoLibra());        
-         conversores.add(new ConversorKilometroMilla());
-          for (Conversor conversor : conversores) {
+        conversores.add(new ConversorKilogramoLibra());
+        conversores.add(new ConversorKilometroMilla());
+        conversores.add(new ConversorCelsiusFahrenheit());
+        for (Conversor conversor : conversores) {
             cbConversores.addItem(conversor.getName());
         }
-       
+
         changeComboBox();
     }
-    
-    
-    private void changeComboBox(){
+
+    private void changeComboBox() {
         int selectedIndex = cbConversores.getSelectedIndex();
         convesorSelected = conversores.get(selectedIndex);
         this.lblUnidad1.setText(convesorSelected.getLabel1());
         this.lblUnidad2.setText(convesorSelected.getLabel2());
     }
-    
+
     private void convertirAValor2() {
         String valorString = txtUnidad1.getText().replace(',', '.');
         Double valorDouble = getValueDouble(valorString);
         Double valor2 = convesorSelected.convertValue1(valorDouble);
         txtUnidad2.setText(String.format("%.2f", valor2));
     }
-    
+
     private void convertirAValor1() {
         String valorString = txtUnidad2.getText().replace(',', '.');
         Double valorDouble = getValueDouble(valorString);
         Double resultado = convesorSelected.convertValue2(valorDouble);
         txtUnidad1.setText(String.format("%.2f", resultado));
     }
-    
-    private Double getValueDouble(String valor){
+
+    private Double getValueDouble(String valor) {
         Double valorDouble = 0.0;
-           try {
+        try {
             final String toLowerCase = valor.toLowerCase();
             if (toLowerCase.endsWith("f") || toLowerCase.endsWith("d")) {
                 throw new NumberFormatException("La unidad tiene una 'f' o una 'd'");
@@ -67,9 +67,9 @@ public class Form extends javax.swing.JFrame {
             valorDouble = Double.valueOf(valor);
         } catch (NumberFormatException ex) {
             System.out.println("Error al convertir ==> " + ex.getMessage());
-            JOptionPane.showMessageDialog(this, "Error al convertir", "Error al convertir",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error al convertir", "Error al convertir", JOptionPane.ERROR_MESSAGE);
         }
-        return valorDouble;  
+        return valorDouble;
     }
 
     /**
@@ -186,18 +186,17 @@ public class Form extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUnidad1ActionPerformed
 
     private void txtUnidad1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUnidad1FocusLost
-       convertirAValor2 = true;
+        convertirAValor2 = true;
     }//GEN-LAST:event_txtUnidad1FocusLost
 
     private void txtUnidad2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUnidad2FocusLost
-         convertirAValor2 = false;
+        convertirAValor2 = false;
     }//GEN-LAST:event_txtUnidad2FocusLost
 
     private void btnConvertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertirActionPerformed
-     if (convertirAValor2) {
+        if (convertirAValor2) {
             convertirAValor2();
-        }
-        else {
+        } else {
             convertirAValor1();
         }
     }//GEN-LAST:event_btnConvertirActionPerformed
@@ -222,7 +221,7 @@ public class Form extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */

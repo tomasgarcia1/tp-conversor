@@ -7,10 +7,10 @@
  *
  * @author Tomas
  */
-public class ConversorKilometroMilla extends Conversor{
+public class ConversorKilometroMilla extends Conversor {
 
-    private final Double kilometroMilla  = 1.61;    
-    private final Double millaKilometro  = 0.62;
+    private final Double kilometroMilla = 1.61;
+    private final Double millaKilometro = 0.62;
 
     @Override
     public String getName() {
@@ -29,12 +29,12 @@ public class ConversorKilometroMilla extends Conversor{
 
     @Override
     public Double convertValue2(Double kilometro) {
-       return kilometro * kilometroMilla;
+        return kilometro * kilometroMilla;
     }
 
     @Override
     public Double convertValue1(Double milla) {
-       return milla * millaKilometro;
+        return milla * millaKilometro;
     }
-    
+
 }
