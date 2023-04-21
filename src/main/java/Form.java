@@ -1,5 +1,4 @@
 
-import java.awt.HeadlessException;
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -42,8 +41,8 @@ public class Form extends javax.swing.JFrame {
         convesorSelected = conversores.get(selectedIndex);
         this.lblUnidad1.setText(convesorSelected.getLabel1());
         this.lblUnidad2.setText(convesorSelected.getLabel2());
-        txtUnidad1.setText("0");
-        txtUnidad2.setText("0");
+        txtUnidad1.setText("0.00");
+        txtUnidad2.setText("0.00");
     }
 
     private void convertirAValor2() {
@@ -73,6 +72,16 @@ public class Form extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error al convertir", "Error al convertir", JOptionPane.ERROR_MESSAGE);
         }
         return valorDouble;
+    }
+    
+    private void onEnterPressedHandler(java.awt.event.KeyEvent event){
+        if(event.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            if (txtUnidad1.isFocusOwner()) {
+                convertirAValor2();
+            } else {
+                convertirAValor1();
+            }
+        }
     }
 
     /**
@@ -110,10 +119,20 @@ public class Form extends javax.swing.JFrame {
                 txtUnidad1ActionPerformed(evt);
             }
         });
+        txtUnidad1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUnidad1KeyPressed(evt);
+            }
+        });
 
         txtUnidad2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtUnidad2FocusLost(evt);
+            }
+        });
+        txtUnidad2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUnidad2KeyPressed(evt);
             }
         });
 
@@ -203,6 +222,14 @@ public class Form extends javax.swing.JFrame {
             convertirAValor1();
         }
     }//GEN-LAST:event_btnConvertirActionPerformed
+
+    private void txtUnidad1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUnidad1KeyPressed
+        onEnterPressedHandler(evt);
+    }//GEN-LAST:event_txtUnidad1KeyPressed
+
+    private void txtUnidad2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUnidad2KeyPressed
+        onEnterPressedHandler(evt);
+    }//GEN-LAST:event_txtUnidad2KeyPressed
 
     /**
      * @param args the command line arguments
