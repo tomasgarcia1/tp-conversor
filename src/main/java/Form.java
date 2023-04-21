@@ -29,6 +29,7 @@ public class Form extends javax.swing.JFrame {
         conversores.add(new ConversorKilogramoLibra());
         conversores.add(new ConversorKilometroMilla());
         conversores.add(new ConversorCelsiusFahrenheit());
+        conversores.add(new ConversorDiaSegundos());
         for (Conversor conversor : conversores) {
             cbConversores.addItem(conversor.getName());
         }
@@ -41,6 +42,8 @@ public class Form extends javax.swing.JFrame {
         convesorSelected = conversores.get(selectedIndex);
         this.lblUnidad1.setText(convesorSelected.getLabel1());
         this.lblUnidad2.setText(convesorSelected.getLabel2());
+        txtUnidad1.setText("0");
+        txtUnidad2.setText("0");
     }
 
     private void convertirAValor2() {
