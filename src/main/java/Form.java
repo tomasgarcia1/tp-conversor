@@ -29,6 +29,7 @@ public class Form extends javax.swing.JFrame {
         conversores.add(new ConversorKilometroMilla());
         conversores.add(new ConversorCelsiusFahrenheit());
         conversores.add(new ConversorDiaSegundos());
+        conversores.add(new ConversorNewtonLibraFuerza());
         for (Conversor conversor : conversores) {
             cbConversores.addItem(conversor.getName());
         }
