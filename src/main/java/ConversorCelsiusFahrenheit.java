@@ -8,13 +8,11 @@
  * @author Serena
  */
 public class ConversorCelsiusFahrenheit extends Conversor {
-    
+
     private static final String NAME = "Celsius / Fahrenheit";
     private static final String LABEL_1 = "Celsius";
     private static final String LABEL_2 = "Fahrenheit";
-    private static final double CONVERT_FACTOR_1 = 9.0 / 5.0;
-    private static final double CONVERT_FACTOR_2 = 5.0 / 9.0;
-    private static final double CONVERT_OFFSET = 32.0;
+    private static final double CONVERT = 32.0;
 
     @Override
     public String getName() {
@@ -32,12 +30,12 @@ public class ConversorCelsiusFahrenheit extends Conversor {
     }
 
     @Override
-    public Double convertValue2(Double celsius) {
-        return (celsius * CONVERT_FACTOR_1) + CONVERT_OFFSET;
+    public Double convertValue1(Double celsius) {
+        return (celsius * 9 / 5) + CONVERT;
     }
 
     @Override
-    public Double convertValue1(Double fahrenheit) {
-        return (fahrenheit - CONVERT_OFFSET) * CONVERT_FACTOR_2;
+    public Double convertValue2(Double fahrenheit) {
+        return (fahrenheit - CONVERT) * 5 / 9;
     }
 }
